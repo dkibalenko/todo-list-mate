@@ -16,3 +16,10 @@ class TaskCreteView(generic.CreateView):
     model = Task
     form_class = TaskForm
     success_url = "/"
+
+
+class TaskUpdateView(generic.UpdateView):
+    template_name = "todo_list_app/task_form.html"
+    model = Task
+    form_class = TaskForm
+    success_url = "/"
