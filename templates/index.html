@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    TODO List
+    <a href=""
+       class="btn btn-primary link-to-page">
+      Add task
+    </a>
+  </h1>
+  {% if todo_list %}
+    <ul>
+      {% for task in todo_list %}
+        <li>
+          {{ task.content }}
+          {% if task.done %}
+            <b style="color:green;">Done</b>
+          {% else %}
+            <b style="color:red;">Not done</b>
+          {% endif %}
+          <p>Created: {{ task.datetime|date:"F j, Y, g:i A" }}</p>
+          <p>Tags: {{ task.tags }}</p>
+          <a href="">Update</a>
+          <a href="">Delete</a>
+        </li>
+      {% endfor %}
+    </ul>
+
+  {% else %}
+    <p>No Tasks found.</p>
+  {% endif %}
+{% endblock %}
