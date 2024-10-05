@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import generic
 
 from .models import Task, Tag
-from .forms import TaskForm
+from .forms import TaskForm, TagForm
 
 class IndexView(generic.ListView):
     template_name = "todo_list_app/index.html"
@@ -36,3 +36,10 @@ class TagListView(generic.ListView):
     model = Tag
     context_object_name = "tag_list"
     queryset = Tag.objects.all()
+
+
+class TagCreateView(generic.CreateView):
+    template_name = "todo_list_app/tag_form.html"
+    model = Tag
+    form_class = TagForm
+    success_url = "/"

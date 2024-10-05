@@ -11,3 +11,9 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
         exclude = ["datetime", "done"]
+
+
+class TagForm(forms.ModelForm):
+    class Meta:
+        model = Tag
+        fields = ["name"]
