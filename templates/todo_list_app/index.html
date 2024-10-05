@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    TODO List
+    <div style="float:right;">
+      <a href=""
+         class="btn btn-primary link-to-page">
+        Add task
+      </a>
+    </div>
+  </h1>
+  <br>
+  {% if todo_list %}
+    <ul class="list-unstyled">
+      {% for task in todo_list %}
+        <li>
+          <strong class="font-weight-bold">{{ task.content }}</strong>
+          <span class="badge badge-{{ task.done|yesno:"success,danger" }}">
+            {{ task.done|yesno:"Done,Not done" }}
+          </span>
+          <p class="text-muted">Created: {{ task.datetime|date:"F j, Y, g:i A" }}</p>
+          <p class="text-secondary d-inline-block mr-1 font-weight-bold">
+            Tags:
+            <span class="text-secondary">
+              {{ task.tags.all|join:", " }}
+            </span>
+          </p>
+          <p class="d-inline-block">
+            <a href="" class="text-primary font-weight-bold">Update</a>
+            <a href="" class="text-danger font-weight-bold">Delete</a>
+          </p>
+        </li>
+      {% endfor %}
+    </ul>
+
+  {% else %}
+    <p>No Tasks found.</p>
+  {% endif %}
+{% endblock %}
