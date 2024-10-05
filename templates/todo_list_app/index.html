@@ -30,7 +30,12 @@
             </form>
           </div>
           <pre></pre>
-          <p class="text-muted">Created: {{ task.datetime|date:"F j, Y, g:i A" }}</p>
+          <p class="text-muted">
+            Created: {{ task.datetime|date:"F j, Y, g:i A" }}.
+            {% if task.deadline %}
+              <span style="color:#9f322e;">Deadline: {{ task.deadline|date:"F j, Y, g:i A" }}</span>
+            {% endif %}
+          </p>
           <p class="text-secondary d-inline-block mr-1 font-weight-bold">
             Tags:
             <span class="text-secondary">
