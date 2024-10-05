@@ -23,3 +23,8 @@ class TaskUpdateView(generic.UpdateView):
     model = Task
     form_class = TaskForm
     success_url = "/"
+
+class TaskDeleteView(generic.DeleteView):
+    template_name = "todo_list_app/task_confirm_delete.html"
+    model = Task
+    success_url = "/"

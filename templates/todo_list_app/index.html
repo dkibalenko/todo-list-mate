@@ -28,7 +28,7 @@
           </p>
           <p class="d-inline-block">
             <a href="{% url 'todo_list_app:update-task' task.pk %}" class="text-primary font-weight-bold">Update</a>
-            <a href="" class="text-danger font-weight-bold">Delete</a>
+            <a href="{% url 'todo_list_app:delete-task' task.pk %}" class="text-danger font-weight-bold">Delete</a>
           </p>
         </li>
       {% endfor %}
