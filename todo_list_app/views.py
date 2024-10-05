@@ -8,7 +8,8 @@ class IndexView(generic.ListView):
     template_name = "todo_list_app/index.html"
     model = Task
     context_object_name = "todo_list"
-    queryset = Task.objects.order_by("done", "-datetime").prefetch_related("tags")
+    queryset = Task.objects.order_by("done", "-datetime") \
+        .prefetch_related("tags")
 
 
 class TaskCreteView(generic.CreateView):
@@ -49,4 +50,10 @@ class TagUpdateView(generic.UpdateView):
     template_name = "todo_list_app/tag_form.html"
     model = Tag
     form_class = TagForm
+    success_url = "/"
+
+
+class TagDeleteView(generic.DeleteView):
+    template_name = "todo_list_app/tag_confirm_delete.html"
+    model = Tag
     success_url = "/"
