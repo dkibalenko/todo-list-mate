@@ -43,3 +43,10 @@ class TagCreateView(generic.CreateView):
     model = Tag
     form_class = TagForm
     success_url = "/"
+
+
+class TagUpdateView(generic.UpdateView):
+    template_name = "todo_list_app/tag_form.html"
+    model = Tag
+    form_class = TagForm
+    success_url = "/"

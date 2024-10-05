@@ -24,7 +24,7 @@
               {{ tag.name }}
           </td>
           <td>
-            <a href="" class="btn btn-secondary">
+            <a href="{% url 'todo_list_app:tag-update' tag.pk %}" class="btn btn-secondary">
               Update
             </a>
           </td>
