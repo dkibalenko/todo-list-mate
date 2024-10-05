@@ -24,7 +24,15 @@ class TaskUpdateView(generic.UpdateView):
     form_class = TaskForm
     success_url = "/"
 
+
 class TaskDeleteView(generic.DeleteView):
     template_name = "todo_list_app/task_confirm_delete.html"
     model = Task
     success_url = "/"
+
+
+class TagListView(generic.ListView):
+    template_name = "todo_list_app/tag_list.html"
+    model = Tag
+    context_object_name = "tag_list"
+    queryset = Tag.objects.all()

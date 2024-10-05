@@ -8,6 +8,7 @@ urlpatterns = [
     path("create/", views.TaskCreteView.as_view(), name="add-task"),
     path("update/<int:pk>/", views.TaskUpdateView.as_view(), name="update-task"),
     path("delete/<int:pk>/", views.TaskDeleteView.as_view(), name="delete-task"),
+    path("tags/", views.TagListView.as_view(), name="tag-list"),
 ]
 
 app_name = "todo_list_app"
