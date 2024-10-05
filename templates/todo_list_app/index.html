@@ -15,10 +15,21 @@
     <ul class="list-unstyled">
       {% for task in todo_list %}
         <li>
-          <strong class="font-weight-bold">{{ task.content }}</strong>
-          <span class="badge badge-{{ task.done|yesno:"success,danger" }}">
+          <h4 style="display:inline;">
+            {{ task.content }}
+          </h4>
+          <span style="display:inline;" class="badge badge-{{ task.done|yesno:"success,danger" }}">
             {{ task.done|yesno:"Done,Not done" }}
           </span>
+          <div style="float:right;">
+            <form action="{% url 'todo_list_app:toggle-done' task.pk %}" method="post" style="display:inline;">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-{{ task.done|yesno:"success,secondary" }} font-weight-bold">
+                {{ task.done|yesno:"Complete, Undo" }}
+              </button>
+            </form>
+          </div>
+          <pre></pre>
           <p class="text-muted">Created: {{ task.datetime|date:"F j, Y, g:i A" }}</p>
           <p class="text-secondary d-inline-block mr-1 font-weight-bold">
             Tags:
@@ -31,6 +42,7 @@
             <a href="{% url 'todo_list_app:delete-task' task.pk %}" class="text-danger font-weight-bold">Delete</a>
           </p>
         </li>
+        <hr>
       {% endfor %}
     </ul>
 

@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.http import HttpRequest
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views import generic
 
 from .models import Task, Tag
@@ -57,3 +58,11 @@ class TagDeleteView(generic.DeleteView):
     template_name = "todo_list_app/tag_confirm_delete.html"
     model = Tag
     success_url = "/"
+
+
+class ToggleDoneButton(generic.View):
+    def post(self, request: HttpRequest, pk: int):
+        task = get_object_or_404(Task, pk=pk)
+        task.done = not task.done
+        task.save()
+        return redirect("todo_list_app:index")
