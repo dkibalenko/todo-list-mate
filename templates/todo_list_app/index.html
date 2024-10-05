@@ -24,8 +24,8 @@
           <div style="float:right;">
             <form action="{% url 'todo_list_app:toggle-done' task.pk %}" method="post" style="display:inline;">
               {% csrf_token %}
-              <button type="submit" class="btn btn-{{ task.done|yesno:"success,secondary" }} font-weight-bold">
-                {{ task.done|yesno:"Complete, Undo" }}
+              <button type="submit" class="btn btn-{{ task.done|yesno:"secondary,success" }} font-weight-bold">
+                {{ task.done|yesno:"Undo, Complete" }}
               </button>
             </form>
           </div>
